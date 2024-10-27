@@ -1,3 +1,8 @@
+
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 import os
 import streamlit as st
 from dotenv import load_dotenv
@@ -8,9 +13,7 @@ from langchain.chains import RetrievalQA
 from functions.Vectordb import rag_chain
 from functions.utility import check_password
 from functions.llm import get_completion
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 
 # region <--------- Streamlit App Configuration --------->
 st.set_page_config(
