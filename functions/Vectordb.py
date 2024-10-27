@@ -12,6 +12,10 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.chains import RetrievalQA
 from langchain.retrievers.multi_query import MultiQueryRetriever
 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 if load_dotenv('.env'):
 # for local development
     OPENAI_KEY=os.getenv('OPENAI_API_KEY')
